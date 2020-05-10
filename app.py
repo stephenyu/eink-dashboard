@@ -10,6 +10,10 @@ from time import gmtime, strftime
 import calendar
 import pytz
 import argparse
+import termtables as tt
+import numpy
+
+
 
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
@@ -76,7 +80,8 @@ def coord(value):
 img = Image.new("P", (display_width, display_height), (255, 255, 255))
 draw = ImageDraw.Draw(img)
 
-font = ImageFont.truetype("JetBrainsMono-Medium.ttf", 17)
+font = ImageFont.truetype("Inconsolata-Regular.ttf", 16)
+font15 = ImageFont.truetype("Inconsolata-Regular.ttf", 16)
 
 cal = calendar.TextCalendar(calendar.SUNDAY)
 
@@ -89,11 +94,18 @@ calStr = cal.formatmonth(sydney_datetime.year, sydney_datetime.month)
 uk_tz = pytz.timezone('Europe/London')
 london_time = datetime.datetime.now(uk_tz).strftime('%H:%M')
 
-draw.text((coord(display_width-140), coord(display_height-45)), "Sydney: " + sydney_time, font_black, font=font)
-draw.text((coord(display_width-140), coord(display_height-25)), "London: " + london_time, font_black, font=font)
+draw.text((coord(227), coord(0)), calStr, font_black, font=font)
 
-draw.text((coord(188), coord(0)), calStr, font_black, font=font)
+# draw.text((coord(display_width-140), coord(display_height-45)), "Sydney: " + sydney_time, font_black, font=font)
+# draw.text((coord(display_width-140), coord(display_height-25)), "London: " + london_time, font_black, font=font)
 
+data = [
+    ["Sydney", sydney_time], ["London", london_time]
+]
+draw.text((coord(display_width-120), coord(display_width-190)), tt.to_string(data,
+    style=tt.styles.rounded,
+    padding=(0, 0),
+    alignment="ll"), font_black, font=font15)
 
 if args.prod:
    inky_display.set_image(img)
