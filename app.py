@@ -94,15 +94,18 @@ calStr = cal.formatmonth(sydney_datetime.year, sydney_datetime.month)
 uk_tz = pytz.timezone('Europe/London')
 london_time = datetime.datetime.now(uk_tz).strftime('%H:%M')
 
+ottawa_tz = pytz.timezone('America/Toronto')
+ottawa_tz = datetime.datetime.now(ottawa_tz).strftime('%H:%M')
+
 draw.text((coord(227), coord(0)), calStr, font_black, font=font)
 
 # draw.text((coord(display_width-140), coord(display_height-45)), "Sydney: " + sydney_time, font_black, font=font)
 # draw.text((coord(display_width-140), coord(display_height-25)), "London: " + london_time, font_black, font=font)
 
 data = [
-    ["Sydney", sydney_time], ["London", london_time]
+    ["Sydney", sydney_time], ["Ottawa", ottawa_tz], ["London", london_time]
 ]
-draw.text((coord(display_width-120), coord(display_width-190)), tt.to_string(data,
+draw.text((coord(display_width-120), coord(display_width-228)), tt.to_string(data,
     style=tt.styles.rounded,
     padding=(0, 0),
     alignment="ll"), font_black, font=font15)
