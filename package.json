@@ -1,0 +1,14 @@
+{
+  "name": "eink-dashboard",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:stephenyu/eink-dashboard.git",
+  "author": "stephenyu <stephen@canva.com>",
+  "license": "MIT",
+  "dependencies": {
+    "node-html-to-image": "^3.0.1"
+  },
+  "scripts": {
+      "build": "sh ./bin/build.sh"
+  }
+}
