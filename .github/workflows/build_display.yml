@@ -28,4 +28,4 @@ jobs:
       - name: Add New Build
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-            commit_message: Autocommit: New Image
+            commit_message: "🤖 New Image"
