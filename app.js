@@ -13,6 +13,7 @@ const html = fs.readFileSync('./index.html', 'utf8');
             // because Docker’s default for /dev/shm is 64MB
             '--disable-dev-shm-usage'
         ],
+        executablePath: '/usr/bin/google-chrome-stable'
     });
     const browserVersion = await browser.version()
     console.log(`Started ${browserVersion}`)
