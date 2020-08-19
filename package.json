@@ -5,10 +5,10 @@
   "repository": "git@github.com:stephenyu/eink-dashboard.git",
   "author": "stephenyu <stephen@canva.com>",
   "license": "MIT",
-  "dependencies": {
-    "node-html-to-image": "^3.0.1"
-  },
   "scripts": {
     "start": "sh ./bin/build.sh"
+  },
+  "dependencies": {
+    "puppeteer": "^5.2.1"
   }
 }
