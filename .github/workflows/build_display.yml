@@ -23,9 +23,9 @@ jobs:
         uses: ianwalter/puppeteer-container@acc52cd2334ad9eaf6e1974562d263e0a711b7e8
         with:
           args: npm install
-        run: |
-            npm start
-      - name: Add New Build
+      - name: Build
+        run: npm start
+      - name: Auto-Commit
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
             commit_message: "🤖 New Image"
