@@ -9,6 +9,6 @@
     "node-html-to-image": "^3.0.1"
   },
   "scripts": {
-      "build": "sh ./bin/build.sh"
+    "start": "sh ./bin/build.sh"
   }
 }

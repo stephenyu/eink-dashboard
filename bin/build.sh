@@ -2,4 +2,4 @@
 
 rm -rf build
 mkdir build
-yarn node app.js
+npx node app.js
