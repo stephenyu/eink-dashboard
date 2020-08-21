@@ -1,0 +1,28 @@
+name: Build Display
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+
+jobs:
+  build_display:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install
+        # NOTE: this pins the action to a specific commit sha for security
+        # reasons but you can also use a version tag if desired. For example:
+        # ianwalter/puppeteer-container@v4.0.0
+        uses: ianwalter/puppeteer-container@acc52cd2334ad9eaf6e1974562d263e0a711b7e8
+        with:
+          args: npm install
+      - name: Build
+        run: |
+             sudo rm -f /etc/localtime
+             sudo ln -sf /usr/share/zoneinfo/Australia/Sydney /etc/localtime
+             npm start
+             mogrify -negate -type Grayscale -colorspace sRGB -depth 1 -resize 400x300 build/image.png
+      - name: Auto-Commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+            commit_message: "🤖 New Image"

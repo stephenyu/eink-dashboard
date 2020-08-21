@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+<style>
+body {
+    width: 400px;
+    height: 300px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    display: flex;
+    padding: 4px;
+    margin: 0px;
+}
+
+#calendar #calendar_heading {
+    text-align: center;
+}
+
+#calendar thead {
+    font-style: italic;
+}
+
+#calendar td {
+    width: 18px;
+    height: 18px;
+    text-align: center;
+}
+
+#calendar td.today {
+    border: 2px solid #000;
+    border-radius: 50%;
+}
+
+#worldclock {
+    height: max-content;
+    border: 1px solid #000;
+    border-radius: 4px;
+}
+
+#worldclock td {
+    padding: 4px;
+}
+
+#worldclock tr:not(:last-child) td {
+    border-bottom: 1px solid #000;
+}
+</style>
+    </head>
+    <body>
+        <div id="calendar">
+            <div id="calendar_heading"></div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Su</th>
+                        <th>Mo</th>
+                        <th>Tu</th>
+                        <th>We</th>
+                        <th>Th</th>
+                        <th>Fr</th>
+                        <th>Sa</th>
+                    </tr>
+                </thead>
+                <tbody id="calendar_body">
+                </tbody>
+            </table>
+        </div>
+        <table id="worldclock" cellspacing="0"></table>
+    </body>
+    <script src="dashboard.js"></script>
+    <script>@INJECT</script>
+</html>
