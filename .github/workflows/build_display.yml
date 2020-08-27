@@ -1,7 +1,7 @@
 name: Build Display
 on:
   schedule:
-    - cron: "59 * * * *"
+    - cron: "40 * * * *"
 
 jobs:
   build_display:
