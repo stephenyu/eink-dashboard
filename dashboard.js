@@ -1,12 +1,14 @@
 function getTimeInTimezone(timeZone) {
+    const date = new Date();
+    date.setHours(date.getMinutes() > 30 ? date.getHours() + 1 : date.getHours());
+
     const options = {
         timeZone,
         hour: 'numeric',
-        minute: 'numeric',
+        dayPeriod: 'short'
     };
 
-    const formatter = new Intl.DateTimeFormat([], options);
-    return formatter.format(new Date());
+    return new Intl.DateTimeFormat('en-US', options).format(date)
 }
 
 function createCalendar() {
