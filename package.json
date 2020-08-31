@@ -3,17 +3,47 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:stephenyu/eink-dashboard.git",
-  "author": "stephenyu <stephen@canva.com>",
+  "author": "Stephen Yu <s.yu@canva.com>",
   "license": "MIT",
+  "watch": {
+    "dev_build": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "tsx,html",
+      "quiet": false
+    },
+    "dev_web": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "tsx,html",
+      "quiet": false
+    }
+  },
   "scripts": {
-    "start": "sh ./bin/build.sh prod",
-    "dev-build": "sh ./bin/build.sh dev",
-    "dev": "node dev_mode.js"
+    "dev": "npm-watch dev_build",
+    "dev-web": "npm-watch dev_web",
+    "start": "NODE_PATH=\"$(pwd)/src:${NODE_PATH:-}\" sh ./bin/build.sh prod",
+    "dev_build": "NODE_PATH=\"$(pwd)/src:${NODE_PATH:-}\" sh ./bin/build.sh dev",
+    "dev_web": "NODE_PATH=\"$(pwd)/src:${NODE_PATH:-}\" ts-node dev_mode.ts"
   },
   "dependencies": {
-    "puppeteer": "^5.2.1"
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.6",
+    "@types/styled-components": "^5.1.2",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.19.0",
+    "npm-watch": "^0.7.0",
+    "puppeteer": "^5.2.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.0",
+    "ts-loader": "^6.2.2",
+    "ts-node": "^9.0.0",
+    "typescript": "^3.8.3"
   },
   "devDependencies": {
-    "live-server": "^1.2.1"
+    "@types/node": "^14.6.2"
   }
 }

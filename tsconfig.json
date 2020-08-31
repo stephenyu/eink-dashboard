@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "moduleResolution": "node",
+    "baseUrl": "./src/",
+    "noImplicitAny": true,
+    "jsx": "react",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "paths": {
+        "web": [
+            "./src/web/*"
+        ]
+    }
+  }
+}
