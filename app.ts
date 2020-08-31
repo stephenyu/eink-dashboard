@@ -1,12 +1,16 @@
 const fs = require('fs');
 const puppeteer = require('puppeteer');
 const indexHtml = fs.readFileSync('./src/html/index.html', 'utf8');
-const { html, styles } = require('web/ssr');
+import { createSsr } from 'web/ssr';
+import { getDashboardData } from 'server/main';
 
 const flavor = process.argv[2];
 const path = "./build/image.png";
 
 (async () => {
+  const dashboardData = await getDashboardData();
+  const { html, styles } = createSsr(dashboardData);
+
   let puppeteerArgs: {args: string[], executablePath?: string} = {
     args: [
       // Required for Docker version of Puppeteer
