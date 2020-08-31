@@ -1,12 +1,12 @@
-const fs = require('fs');
 const puppeteer = require('puppeteer');
-const indexHtml = fs.readFileSync('./src/html/index.html', 'utf8');
-const { html, styles } = require('web/ssr');
+import { getSsr } from 'web/ssr';
 
 const flavor = process.argv[2];
 const path = "./build/image.png";
 
 (async () => {
+  const html = await getSsr();
+
   let puppeteerArgs: {args: string[], executablePath?: string} = {
     args: [
       // Required for Docker version of Puppeteer
@@ -29,7 +29,7 @@ const path = "./build/image.png";
 
   const page = await browser.newPage();
   await page.setViewport({ width: 400, height: 300 });
-  await page.setContent(indexHtml.replace('<%= HTML %>', html).replace('<%= CSS %>', styles));
+  await page.setContent(html);
   await page.screenshot({ path });
   await browser.close();
 })();
