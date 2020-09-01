@@ -8,11 +8,12 @@ const GlobalStyle = createGlobalStyle`
   body {
     width: 400px;
     height: 300px;
-    font-size: 14px;
+    font-size: 18px;
     display: flex;
     padding: 8px;
     margin: 0px;
     justify-content: space-evenly;
+    font-family: sans-serif;
   }
 `;
 
