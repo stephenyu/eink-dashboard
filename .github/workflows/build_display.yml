@@ -1,7 +1,5 @@
 name: Build Display
-on:
-  schedule:
-    - cron: "40 * * * *"
+on: [workflow_dispatch]
 
 jobs:
   build_display:
