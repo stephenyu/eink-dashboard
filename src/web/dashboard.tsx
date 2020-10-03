@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 import { DashboardProps as ServerData } from 'shared/types';
 import { Calendar } from 'web/calendar/calendar';
 import { WorldClock } from 'web/world_clock/world_clock';
+import { Weather } from 'web/weather/weather';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -22,10 +23,15 @@ type DashboardProps = {
 };
 
 export const Dashboard = ({ data }: DashboardProps) => {
-  const { timezones } = data;
+  const { timezones, weather } = data;
   return <>
     <GlobalStyle />
-    <Calendar />
-    <WorldClock timezones={timezones}/>
+    <div>
+      <Calendar />
+    </div>
+    <div>
+      <WorldClock timezones={timezones}/>
+      <Weather data={weather}/>
+    </div>
   </>;
 };

@@ -3,10 +3,7 @@ export type Timezone = {
   label: string;
 };
 
-export type Weather = {
-  name: string;
-  celsius: number;
-};
+export type Weather = string[];
 
 export interface DashboardProps {
   weather: Weather[];

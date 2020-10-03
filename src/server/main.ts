@@ -10,13 +10,19 @@ const timezones = [
 
 const weatherLocation = "Glebe,Sydney";
 
+function dailyEntryToCollection(entry:  WttrDaily) {
+  return entry.hourly.reduce<string[]>((collection, daily) => {
+    const entryHour = parseInt(daily.time, 10) / 100;
+    return (entryHour < 9)
+      ? collection
+      : [ ...collection, daily.FeelsLikeC ];
+  }, []);
+}
+
 async function getWeather(location: string) {
   const wttrData = await getWeatherData(location);
-  const currentHour = new Date().getHours();
-
-  const structureWttrData = wttrData.weather.reduce<Record<string, WttrHourlyWeather[]>>((weatherCollection, daily) =>
-    ({ ...weatherCollection, [daily.date]: daily.hourly.map(hourly => hourly) }), {});
-
+  const weatherData = wttrData.weather.map(entry => dailyEntryToCollection(entry));
+  return weatherData;
 }
 
 interface WttrHourlyWeather {
@@ -49,10 +55,8 @@ async function getWeatherData(location: string): Promise<WttrWeather> {
 export async function getDashboardData(): Promise<DashboardProps> {
   const weatherData = await getWeather(weatherLocation);
 
-  return Promise.resolve(
-    {
-      timezones,
-      weather: [{ name: 'Sydney', celsius: 15.9 }],
-    }
-  );
+  return {
+    timezones,
+    weather: weatherData
+  };
 }
