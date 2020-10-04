@@ -1,31 +1,27 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { WeatherEntry } from 'shared/types';
 
 const StyledWeather = styled.div`
-margin-top: 8px;
+  margin-top: 8px;
+  font-size: .8em;
 `;
 
 type WeatherProps = {
-  data: string[][];
+  data: WeatherEntry[][];
 };
 
-const DayOfTheWeatherAbbreviations = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
-const ClockSymbols = ['&#128344;','&#128347;', '&#128338;', '&#128341;', '&#128344;'];
+const ClockSymbols = ['9 AM','12 PM', '3 PM', '6 PM', '9 PM'];
 
 export const Weather = ({ data }: WeatherProps) => {
-  const todayDate = new Date();
-  const tomorrowDate = new Date();
-  tomorrowDate.setDate(tomorrowDate.getDate() + 1);
-
   const today = data[0];
-  const tomorrow = data[1];
 
   return <StyledWeather>
     <table>
       <th></th>
-      <th>{DayOfTheWeatherAbbreviations[todayDate.getDay()]}</th>
-      <th>{DayOfTheWeatherAbbreviations[tomorrowDate.getDay()]}</th>
-      {ClockSymbols.map((clockSymbol, index) => <tr key={index}><td><span dangerouslySetInnerHTML={{ __html: clockSymbol }} /></td><td>{today[index]}°C</td><td>{tomorrow[index]}°C</td></tr>)}
+      <th>°C</th>
+      <th>&#9730;</th>
+      {ClockSymbols.map((clockSymbol, index) => <tr key={index}><td><span dangerouslySetInnerHTML={{ __html: clockSymbol }} /></td><td>{today[index].temp}°C</td><td>{today[index].chanceOfRain}%</td></tr>)}
     </table>
   </StyledWeather>;
 };

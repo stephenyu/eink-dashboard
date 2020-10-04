@@ -1,6 +1,6 @@
 import * as https from 'https';
 import * as http from 'http';
-import { DashboardProps } from 'shared/types';
+import { DashboardProps, WeatherEntry } from 'shared/types';
 
 const timezones = [
   { timezone: 'Australia/Sydney', label: 'Sydney' },
@@ -11,11 +11,12 @@ const timezones = [
 const weatherLocation = "Glebe,Sydney";
 
 function dailyEntryToCollection(entry:  WttrDaily) {
-  return entry.hourly.reduce<string[]>((collection, daily) => {
+  console.log(entry);
+  return entry.hourly.reduce<WeatherEntry[]>((collection, daily) => {
     const entryHour = parseInt(daily.time, 10) / 100;
     return (entryHour < 9)
       ? collection
-      : [ ...collection, daily.FeelsLikeC ];
+      : [ ...collection, { temp: daily.FeelsLikeC, chanceOfRain: daily.chanceofrain }];
   }, []);
 }
 
@@ -29,6 +30,7 @@ interface WttrHourlyWeather {
   FeelsLikeC: string;
   tempC: string;
   time: string;
+  chanceofrain: string;
 }
 
 interface WttrDaily {

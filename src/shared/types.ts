@@ -3,7 +3,12 @@ export type Timezone = {
   label: string;
 };
 
-export type Weather = string[];
+export type WeatherEntry = {
+  temp: string;
+  chanceOfRain: string;
+};
+
+export type Weather = WeatherEntry[];
 
 export interface DashboardProps {
   weather: Weather[];
