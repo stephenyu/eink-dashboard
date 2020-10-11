@@ -25,3 +25,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
             commit_message: "🤖 New Image"
+            commit_author: Action <actions@github.com>
