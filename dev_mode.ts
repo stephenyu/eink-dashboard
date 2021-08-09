@@ -1,4 +1,4 @@
-const http = require('http');
+import * as http from 'http';
 import { getSsr } from 'web/ssr';
 
 http.createServer(function(request:any, response:any) {

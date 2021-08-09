@@ -24,6 +24,7 @@
   "scripts": {
     "dev": "npm-watch dev_build",
     "dev-web": "npm-watch dev_web",
+    "dev-gen-html": "NODE_PATH=\"$(pwd)/src:${NODE_PATH:-}\" ts-node gen_html.ts",
     "start": "NODE_PATH=\"$(pwd)/src:${NODE_PATH:-}\" sh ./bin/build.sh prod",
     "dev_build": "NODE_PATH=\"$(pwd)/src:${NODE_PATH:-}\" sh ./bin/build.sh dev",
     "dev_web": "NODE_PATH=\"$(pwd)/src:${NODE_PATH:-}\" ts-node dev_mode.ts"
