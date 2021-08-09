@@ -11,7 +11,6 @@ const timezones = [
 const weatherLocation = "Glebe,Sydney";
 
 function dailyEntryToCollection(entry:  WttrDaily) {
-  console.log(entry);
   return entry.hourly.reduce<WeatherEntry[]>((collection, daily) => {
     const entryHour = parseInt(daily.time, 10) / 100;
     return (entryHour < 9)
