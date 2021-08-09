@@ -20,7 +20,7 @@ jobs:
         run: |
              sudo rm -f /etc/localtime
              sudo ln -sf /usr/share/zoneinfo/Australia/Sydney /etc/localtime
-             sudo apt update imagemagick --yes
+             sudo apt upgrade imagemagick --yes
              yarn start
              mogrify -negate -type Grayscale -colorspace sRGB -depth 1 -resize 400x300 build/image.png
       - name: Auto-Commit
