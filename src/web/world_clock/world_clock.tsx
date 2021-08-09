@@ -10,7 +10,7 @@ function getTimeInTimezone(timeZone: string) {
     timeZone,
     hour: 'numeric',
     dayPeriod: 'short'
-  };
+  } as Intl.DateTimeFormatOptions;
 
   return new Intl.DateTimeFormat('en-US', options).format(date);
 }

@@ -29,9 +29,9 @@ export const Calendar = () => {
   const todaysDate = date.getDate();
 
   const options = {
-    month: 'long',
-    year: 'numeric'
-  };
+    month: "long",
+    year: "numeric"
+  } as Intl.DateTimeFormatOptions;
 
   const monthHeading = new Intl.DateTimeFormat('en-US', options).format(date);
 
