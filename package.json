@@ -1,10 +1,9 @@
 {
   "name": "eink-dashboard",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "2.0.0",
   "repository": "git@github.com:stephenyu/eink-dashboard.git",
-  "author": "Stephen Yu <s.yu@canva.com>",
-  "license": "MIT",
+  "author": "Stephen Yu <s.yu@less3.com>",
+  "license": "GPL-3.0-or-later",
   "watch": {
     "dev_build": {
       "patterns": [
@@ -24,7 +23,6 @@
   "scripts": {
     "dev": "npm-watch dev_build",
     "dev-web": "npm-watch dev_web",
-    "dev-gen-html": "NODE_PATH=\"$(pwd)/src:${NODE_PATH:-}\" ts-node gen_html.ts",
     "start": "NODE_PATH=\"$(pwd)/src:${NODE_PATH:-}\" sh ./bin/build.sh prod",
     "dev_build": "NODE_PATH=\"$(pwd)/src:${NODE_PATH:-}\" sh ./bin/build.sh dev",
     "dev_web": "NODE_PATH=\"$(pwd)/src:${NODE_PATH:-}\" ts-node dev_mode.ts"
