@@ -13,4 +13,8 @@ export type Weather = WeatherEntry[];
 export interface DashboardProps {
   weather: Weather[];
   timezones: Timezone[];
+  news: {
+    guardian: string;
+    smh: string;
+  }
 }
