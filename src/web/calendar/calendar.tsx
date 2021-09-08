@@ -44,11 +44,11 @@ export const Calendar = () => {
     let trElements = [];
 
     for(let i = date.getDay(); i > 0; i--) {
-      trElements.push(<StyledTD today={false}/>);
+      trElements.push(<StyledTD key={i} today={false}/>);
     }
 
     while(date.getMonth() === currentMonth) {
-      const tdElement = <StyledTD today={date.getDate() === todaysDate}>{date.getDate()}</StyledTD>;
+      const tdElement = <StyledTD key={date.getDate()} today={date.getDate() === todaysDate}>{date.getDate()}</StyledTD>;
       trElements.push(tdElement);
 
       date.setDate(date.getDate() + 1);
