@@ -19,9 +19,13 @@ interface WttrWeather {
 }
 
 export async function getWeather(location: string) {
-  const wttrData = await getWeatherData(location);
-  const weatherData = wttrData.weather.map(entry => dailyEntryToCollection(entry));
-  return weatherData;
+  try {
+    const wttrData = await getWeatherData(location);
+    const weatherData = wttrData.weather.map(entry => dailyEntryToCollection(entry));
+    return weatherData;
+  } catch(err) {
+    return [];
+  }
 }
 
 function dailyEntryToCollection(entry:  WttrDaily) {
@@ -34,11 +38,17 @@ function dailyEntryToCollection(entry:  WttrDaily) {
 }
 
 async function getWeatherData(location: string): Promise<WttrWeather> {
-  return new Promise(resolve => {
+  return new Promise((resolve, reject) => {
     const callback = (response: http.IncomingMessage) => {
       let body = "";
       response.on('data', c => body += c);
-      response.on('end', () => resolve(JSON.parse(body)));
+      response.on('end', () => {
+        try {
+          resolve(JSON.parse(body));
+        } catch (err) {
+          reject();
+        }
+      });
     };
 
     https.get(`https://wttr.in/${location}?format=j1`, callback);
