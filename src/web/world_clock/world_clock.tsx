@@ -9,7 +9,6 @@ function getTimeInTimezone(timeZone: string) {
   const options = {
     timeZone,
     hour: 'numeric',
-    dayPeriod: 'short'
   } as Intl.DateTimeFormatOptions;
 
   return new Intl.DateTimeFormat('en-US', options).format(date);
