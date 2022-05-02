@@ -16,6 +16,10 @@ const ClockSymbols = ['9 AM','12 PM', '3 PM', '6 PM', '9 PM'];
 export const Weather = ({ data }: WeatherProps) => {
   const today = data[0];
 
+  if (today === undefined) {
+    return <></>;
+  }
+
   return <StyledWeather>
     <table>
       <th></th>
