@@ -17,11 +17,11 @@ inky_display.set_border(inky_display.BLACK)
 img = Image.open(os.path.join(PATH, "../build/image.png"))
 
 # Create the palette
-pal_img = Image.new("P", (1, 1))
-pal_img.putpalette((255, 255, 255, 0, 0, 0, 255, 0, 0) + (0, 0, 0) * 252)
-
-# Process the image using the palette
-img = img.convert("RGB").quantize(palette=pal_img)
+#pal_img = Image.new("P", (1, 1))
+#pal_img.putpalette((255, 255, 255, 0, 0, 0, 255, 0, 0) + (0, 0, 0) * 252)
+#
+## Process the image using the palette
+#img = img.convert("RGB").quantize(palette=pal_img)
 
 # Display the logo image
 
