@@ -6,10 +6,10 @@ on:
 
 jobs:
   build_display:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Install
         # reasons but you can also use a version tag if desired. For example:
         # ianwalter/puppeteer-container@v4.0.0
